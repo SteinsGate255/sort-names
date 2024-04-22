@@ -21,9 +21,10 @@ To use the Name Sorter application, follow these steps:
 
 ### Clone the repository to your local machine.
 1. Clone the repository to your local machine:
-https://github.com/SteinsGate255/sort-names.git
-- Open the solution in Visual Studio or your preferred C# IDE.
-- Build the solution to ensure all dependencies are resolved.
-- Run the application.
-- Provide the path to the text file containing the unsorted list of names when prompted.
-- The sorted list of names will be displayed in the console and written to a file named sorted-names-list.txt.
+git clone https://github.com/SteinsGate255/sort-names.git
+2. Open the solution in Visual Studio or your preferred C# IDE.
+3. Build the solution to ensure all dependencies are resolved.
+4. Navigate to the path name-sorter\name-sorter\bin\Debug\net8.0 to access the name-sorter application exe
+5. Add/Replace the unsorted-names-list.txt in this path.
+6. Run the application from this path as such: .\name-sorter .\unsorted-names-list.txt
+7. The sorted list of names will be displayed in the console and written to a file named sorted-names-list.txt.
