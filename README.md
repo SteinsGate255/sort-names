@@ -7,12 +7,12 @@ This is a simple C# console application that sorts a list of names. Given a set 
 #Features
 _________
 
--Sorts a list of names by last name and given names.
--Handles names with multiple given names.
--Supports names with given names of varying lengths.
--Sorts names consistently regardless of the order in which they are provided.
--Handles duplicate names correctly.
--Gracefully handles empty input and null names.
+- Sorts a list of names by last name and given names.
+- Handles names with multiple given names.
+- Supports names with given names of varying lengths.
+- Sorts names consistently regardless of the order in which they are provided.
+- Handles duplicate names correctly.
+- Gracefully handles empty input and null names.
 
 
 Usage
