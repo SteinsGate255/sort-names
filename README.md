@@ -19,7 +19,9 @@ _________
 ______
 To use the Name Sorter application, follow these steps:
 
-- Clone the repository to your local machine.
+### Clone the repository to your local machine.
+1. Clone the repository to your local machine:
+https://github.com/SteinsGate255/sort-names.git
 - Open the solution in Visual Studio or your preferred C# IDE.
 - Build the solution to ensure all dependencies are resolved.
 - Run the application.
