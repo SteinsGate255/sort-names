@@ -26,5 +26,5 @@ git clone https://github.com/SteinsGate255/sort-names.git
 3. Build the solution to ensure all dependencies are resolved.
 4. Navigate to the path name-sorter\name-sorter\bin\Debug\net8.0 to access the name-sorter application exe
 5. Add/Replace the unsorted-names-list.txt in this path.
-6. Run the application from this path as such: .\name-sorter .\unsorted-names-list.txt
+6. Run the application from this path on the terminal as such: .\name-sorter .\unsorted-names-list.txt
 7. The sorted list of names will be displayed in the console and written to a file named sorted-names-list.txt.
