@@ -7,13 +7,18 @@ using System.Threading.Tasks;
 namespace name_sorter
 {
 
-    public static class NameSorter
+    public class NameSorter
     {
-        public static void SortNames(List<Name> names)
+        private readonly ISortStrategy _sortStrategy;
+
+        public NameSorter(ISortStrategy sortStrategy)
         {
-            // Sort the list of names using the CompareTo method of the Name class
-            if (names == null) throw new ArgumentNullException(nameof(names));
-            names.Sort();
+            _sortStrategy = sortStrategy;
+        }
+
+        public void SortNames(List<Name> names)
+        {
+            _sortStrategy.Sort(names);
         }
     }
 

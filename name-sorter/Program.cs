@@ -47,7 +47,8 @@ class Program
         }
 
         // Sort the names
-        NameSorter.SortNames(names);
+        NameSorter nameSorter = new NameSorter(new LastNameThenGivenNamesSortStrategy());
+        nameSorter.SortNames(names);
 
         List<string> name_Strings = new List<string>();
         foreach (Name name in names)
