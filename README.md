@@ -28,3 +28,7 @@ git clone https://github.com/SteinsGate255/sort-names.git
 5. Add/Replace the unsorted-names-list.txt in this path.
 6. Run the application from this path on the terminal as such: .\name-sorter .\unsorted-names-list.txt
 7. The sorted list of names will be displayed in the console and written to a file named sorted-names-list.txt.
+
+### CI/CD Pipeline
+
+A build and test pipeline was created using Appveyor for this account, which runs on Push
