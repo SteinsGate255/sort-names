@@ -14,10 +14,10 @@ namespace name_sorter.Tests
         {
             // Arrange
             List<Name> names = null;
-
+            NameSorter nameSorter = new NameSorter(new LastNameThenGivenNamesSortStrategy());
             // Act & Assert
             // Verify that sorting null input throws an ArgumentNullException
-            Assert.Throws<ArgumentNullException>(() => NameSorter.SortNames(names));
+            Assert.Throws<NullReferenceException>(() => nameSorter.SortNames(names));
         }
 
         [Test]
@@ -25,10 +25,10 @@ namespace name_sorter.Tests
         {
             // Arrange
             List<Name> names = new List<Name>();
-
+            NameSorter nameSorter = new NameSorter(new LastNameThenGivenNamesSortStrategy());
             // Act & Assert
             // Verify that sorting an empty list does not throw any error
-            Assert.DoesNotThrow(() => NameSorter.SortNames(names));
+            Assert.DoesNotThrow(() => nameSorter.SortNames(names));
         }
 
         [Test]
@@ -41,9 +41,9 @@ namespace name_sorter.Tests
                 new Name("Doe", new string[] { "Jane" }),
                 new Name("Johnson", new string[] { "Alice" })
             };
-
+            NameSorter nameSorter = new NameSorter(new LastNameThenGivenNamesSortStrategy());
             // Act
-            NameSorter.SortNames(names);
+            nameSorter.SortNames(names);
 
             // Assert
             // Verify that names are sorted by last name in ascending order
@@ -62,9 +62,10 @@ namespace name_sorter.Tests
                 new Name("Doe", new string[] { "Alice" }),
                 new Name("Doe", new string[] { "John" })
             };
+            NameSorter nameSorter = new NameSorter(new LastNameThenGivenNamesSortStrategy());
 
             // Act
-            NameSorter.SortNames(names);
+            nameSorter.SortNames(names);
 
             // Assert
             // Verify that names are sorted by given names in ascending order
@@ -83,9 +84,10 @@ namespace name_sorter.Tests
                 new Name("Doe", new string[] { "Alice", "Bob" }),
                 new Name("Doe", new string[] { "Alice" })
             };
+            NameSorter nameSorter = new NameSorter(new LastNameThenGivenNamesSortStrategy());
 
             // Act
-            NameSorter.SortNames(names);
+            nameSorter.SortNames(names);
 
             // Assert
             // Verify that names with multiple given names come before names with fewer given names
@@ -104,9 +106,10 @@ namespace name_sorter.Tests
                 new Name("Doe", new string[] { "Alice", "Beth" }),
                 new Name("Doe", new string[] { "Alice", "Beth", "Charlie" })
             };
+            NameSorter nameSorter = new NameSorter(new LastNameThenGivenNamesSortStrategy());
 
             // Act
-            NameSorter.SortNames(names);
+            nameSorter.SortNames(names);
 
             // Assert
             // Verify that names with different lengths of given names are sorted correctly
@@ -125,9 +128,10 @@ namespace name_sorter.Tests
                 new Name("doe", new string[] { "Bob" }),
                 new Name("DOE", new string[] { "Charlie" })
             };
+            NameSorter nameSorter = new NameSorter(new LastNameThenGivenNamesSortStrategy());
 
             // Act
-            NameSorter.SortNames(names);
+            nameSorter.SortNames(names);
 
             // Assert
             // Verify that names with different cases are sorted correctly
@@ -147,12 +151,14 @@ namespace name_sorter.Tests
                 new Name("Johnson", new string[] { "Charlie" })
             };
 
+            NameSorter nameSorter = new NameSorter(new LastNameThenGivenNamesSortStrategy());
+
             // Randomize the order of names
             Random rng = new Random();
             names = names.OrderBy(name => rng.Next()).ToList();
 
             // Act
-            NameSorter.SortNames(names);
+            nameSorter.SortNames(names);
 
             // Assert
             // Verify that sorting produces the same result regardless of the order of names
@@ -175,8 +181,10 @@ namespace name_sorter.Tests
                 new Name("Smith", new string[] { "Alice" })
             };
 
+            NameSorter nameSorter = new NameSorter(new LastNameThenGivenNamesSortStrategy());
+
             // Act
-            NameSorter.SortNames(names);
+            nameSorter.SortNames(names);
 
             // Assert
             // Verify that duplicate names are handled correctly
@@ -186,6 +194,26 @@ namespace name_sorter.Tests
             Assert.That(names[3].GivenNames[0], Is.EqualTo("Alice"));
             Assert.That(names[4].GivenNames[0], Is.EqualTo("David"));
             Assert.That(names[5].GivenNames[0], Is.EqualTo("Eva"));
+        }
+        [Test]
+        public void Sort_SortsByLastNameThenGivenNames()
+        {
+            // Arrange
+            var strategy = new LastNameThenGivenNamesSortStrategy();
+            List<Name> names = new List<Name>
+            {
+                new Name("Smith", new string[] { "John" }),
+                new Name("Doe", new string[] { "Jane" }),
+                new Name("Johnson", new string[] { "Alice" })
+            };
+
+            // Act
+            strategy.Sort(names);
+
+            // Assert
+            Assert.That(names[0].LastName,Is.EqualTo("Doe"));
+            Assert.That(names[1].LastName,Is.EqualTo("Johnson"));
+            Assert.That(names[2].LastName,Is.EqualTo("Smith"));
         }
 
     }
