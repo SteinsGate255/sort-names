@@ -46,7 +46,7 @@ class Program
             names.Add(name);
         }
 
-        // Sort the names
+        // Sort the names using LastName first then GivenNames Sort Strategy
         NameSorter nameSorter = new NameSorter(new LastNameThenGivenNamesSortStrategy());
         nameSorter.SortNames(names);
 

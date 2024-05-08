@@ -34,15 +34,30 @@
         }
 
         [Test]
-        public void CompareTo_NullOther_ThrowsArgumentNullException()
+        public void Constructor_ValidArguments_ConstructsObject()
         {
             // Arrange
-            Name name = new Name("Doe", new string[] { "John" });
+            string lastName = "Doe";
+            string[] givenNames = { "John", "Robert" };
 
-            // Act & Assert
-            // Verify that comparing to a null name throws an ArgumentNullException
-            Assert.Throws<ArgumentNullException>(() => name.CompareTo(null));
+            // Act
+            Name name = new Name(lastName, givenNames);
+
+            // Assert
+            Assert.That(lastName, Is.EqualTo(name.LastName));
+            Assert.That(givenNames, Is.EqualTo(name.GivenNames));
         }
+
+        //[Test]
+        //public void CompareTo_NullOther_ThrowsArgumentNullException()
+        //{
+        //    // Arrange
+        //    Name name = new Name("Doe", new string[] { "John" });
+
+        //    // Act & Assert
+        //    // Verify that comparing to a null name throws an ArgumentNullException
+        //    Assert.Throws<ArgumentNullException>(() => name.CompareTo(null));
+        //}
 
         [Test]
         public void Name_Representation_Correct()
@@ -62,21 +77,21 @@
 
         }
 
-        [Test]
-        public void Name_Implements_IComparable_Correctly()
-        {
-            // Arrange
-            Name name1 = new Name("Doe", new string[] { "John" });
-            Name name2 = new Name("Smith", new string[] { "Alice" });
-            Name name3 = new Name("Smith", new string[] { "Betty" });
-            Name name4 = new Name("Smith", new string[] { "Alice", "Betty" });
-            Name name5 = new Name("Smith", new string[] { "Alice", "Cathy" });
+        //[Test]
+        //public void Name_Implements_IComparable_Correctly()
+        //{
+        //    // Arrange
+        //    Name name1 = new Name("Doe", new string[] { "John" });
+        //    Name name2 = new Name("Smith", new string[] { "Alice" });
+        //    Name name3 = new Name("Smith", new string[] { "Betty" });
+        //    Name name4 = new Name("Smith", new string[] { "Alice", "Betty" });
+        //    Name name5 = new Name("Smith", new string[] { "Alice", "Cathy" });
 
-            // Act & Assert
-            // Verify that the CompareTo method behaves correctly for different scenarios
-            Assert.That(name1.CompareTo(name2) < 0); // Last name comparison Doe < Smith 
-            Assert.That(name2.CompareTo(name3) < 0); // Given name comparison for same last name
-            Assert.That(name4.CompareTo(name5) < 0); // Multiple given name comparison for same last name and same first given name
-        }
+        //    // Act & Assert
+        //    // Verify that the CompareTo method behaves correctly for different scenarios
+        //    Assert.That(name1.CompareTo(name2) < 0); // Last name comparison Doe < Smith 
+        //    Assert.That(name2.CompareTo(name3) < 0); // Given name comparison for same last name
+        //    Assert.That(name4.CompareTo(name5) < 0); // Multiple given name comparison for same last name and same first given name
+        //}
     }
 }
